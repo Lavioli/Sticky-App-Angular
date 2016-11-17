@@ -1,0 +1,19 @@
+{
+  "name": "sticky-app-angular",
+  "version": "1.0.0",
+  "description": "This is a BeThinker Clone built with AngularJs instead of ReactJs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lavioli/Sticky-App-Angular.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lavioli/Sticky-App-Angular/issues"
+  },
+  "homepage": "https://github.com/Lavioli/Sticky-App-Angular#readme"
+}

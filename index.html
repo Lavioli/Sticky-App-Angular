@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Sticky App</title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+
+			<script type="text/javascript" src="./index.js"></script>
+</head>
+	
+<body>
+
+<div ng-app="myStickyApp">
+	<div ng-controller="stickyCtrl">
+		<ul>
+			<li ng-repeat="sticky in stickies">
+				<button ng-click="deleteSticky(sticky)">X</button>
+				{{sticky.text}}
+			</li>
+
+		</ul>
+		<form>
+			<input type="add-input" placeholder="insert sticky text here" type="text" ng-model="formStickyText" ng-model-instant />
+			<button ng-click="addSticky()">Add Sticky</button>
+		</form>
+	</div>
+</div>
+
+
+</body>
+
+</html>
