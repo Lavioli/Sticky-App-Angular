@@ -26,21 +26,24 @@
 	<div ng-controller="stickyCtrl">
 		<ul id="sticky-list">
 			<li ng-repeat="sticky in stickies" ng-dblclick="toggleEditMode()">
-				
 				<div class="view" ng-keyup="editToDo()">
 					<button ng-click="deleteSticky(sticky)">X</button>
-
-					<span>{{sticky.text}}</span>
+					<p>{{sticky.title}}</p>
+					<p>{{sticky.text}}</p>
 				</div>
-
+				<input class="edit" type="text" ng-model="sticky.title" ng-keyup="editOnEnter(sticky)" />
 				<input class="edit" type="text" ng-model="sticky.text" ng-keyup="editOnEnter(sticky)" />
-				
 			</li>
 
 		</ul>
 
 		<form>
-			<input type="add-input" placeholder="insert sticky text here" type="text" ng-model="formStickyText" ng-model-instant />
+			<div>
+				<input type="add-input" placeholder="insert sticky title here" type="text" ng-model="formStickyTitle" ng-model-instant />
+			</div>
+			<div>
+				<input type="add-input" placeholder="insert sticky text here" type="text" ng-model="formStickyText" ng-model-instant />
+			</div>
 			<button ng-click="addSticky()">Add Sticky</button>
 		</form>
 	</div>

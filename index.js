@@ -2,10 +2,13 @@ angular.module('myStickyApp', [])
 	.controller('stickyCtrl', ['$scope', function myController($scope) {
 		$scope.stickies = [
 			{
+				title: 'title1',
 				text: 'learn angularJS'
+
 			},
 
 			{
+				title: 'title2',
 				text: 'build an app'
 			}				
 		];
@@ -16,9 +19,11 @@ angular.module('myStickyApp', [])
 
 		$scope.addSticky = function() {
 			$scope.stickies.push({
+				title: $scope.formStickyTitle,
 				text: $scope.formStickyText
 			});
 			$scope.formStickyText = '';
+			$scope.formStickyTitle = '';
 		};
 
 		$scope.deleteSticky = function(sticky) {
