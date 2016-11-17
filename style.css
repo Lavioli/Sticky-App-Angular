@@ -1,0 +1,41 @@
+* {
+	background-color: lightsteelblue;
+}
+
+#sticky-list {
+	margin: 10px 0;
+	padding: 0;
+	list-style: none;
+}
+
+#sticky-list li {
+	padding: 18px 20px 18px 0;
+	position: relative;
+	font-size: 24px;
+	border-bottom: 1px solid #cccccc;
+}
+
+#sticky-list li:last-child {
+	border-bottom: none;
+}
+
+#sticky-list li .edit {
+    display: none;
+}
+
+
+#sticky-list li.editing {
+	border-bottom: 1px solid #778899;
+}
+
+#sticky-list li.editing .view {
+	display: none;
+}
+
+#sticky-list li.editing .edit {
+	display: block;
+	width: 444px;
+	padding: 13px 15px 14px 20px;
+	margin: 0;
+	background-color: white;
+}

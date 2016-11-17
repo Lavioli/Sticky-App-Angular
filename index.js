@@ -18,12 +18,21 @@ angular.module('myStickyApp', [])
 			$scope.stickies.push({
 				text: $scope.formStickyText
 			});
-
 			$scope.formStickyText = '';
 		};
 
 		$scope.deleteSticky = function(sticky) {
 			var index = $scope.stickies.indexOf(sticky);
 			$scope.stickies.splice(index, 1);
+		}
+
+		$scope.toggleEditMode = function() {
+			$(event.target).closest('li').toggleClass('editing');
+		}
+
+		$scope.editOnEnter = function(sticky) {
+			if(event.keyCode == 13 && sticky.text) {
+				$scope.toggleEditMode();
+			}
 		}
 	}])			
