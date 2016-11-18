@@ -33,7 +33,7 @@
 				<input type="add-input" placeholder="insert sticky title here" type="text" ng-model="formStickyTitle" ng-model-instant />
 			</div>
 			<div>
-				<input type="add-input" placeholder="insert sticky text here" type="text" ng-model="formStickyText" ng-model-instant />
+				<input type="add-input" placeholder="insert sticky text here" type="text" ng-model="formStickyText" ng-model-instant ng-change="sitckies.$save(sticky)"/>
 			</div>
 			<input type="submit" value="Add" ng-click="addSticky()"/>
 		</form>

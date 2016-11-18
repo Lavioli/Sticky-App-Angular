@@ -10,10 +10,7 @@ firebase.initializeApp(config);
 
 angular.module('myStickyApp', ['firebase']) 
 	.controller('stickyCtrl', ['$scope', '$firebaseArray', function stickyCtrl($scope, $firebaseArray) {
-		var stickies = [];
-
 		var database = firebase.database().ref("/stickies");
-		console.log(database);
 
 		$scope.stickies = $firebaseArray(database);
 
@@ -28,13 +25,11 @@ angular.module('myStickyApp', ['firebase'])
 			$scope.formStickyTitle = '';
 		};
 
-
+//DELETE stickies
 		$scope.deleteSticky = function(sticky) {
-
 			var index = $scope.stickies.indexOf(sticky);
-			$scope.stickies.$remove(index).then(function(database){
+			$scope.stickies.$remove(index).then(function(database) {
 				database.key === index.$id;
-
 			})
 		}
 
@@ -43,13 +38,14 @@ angular.module('myStickyApp', ['firebase'])
 		}
 
 		$scope.editOnEnter = function(sticky) {
+			var index = $scope.stickies.indexOf(sticky);
+
 			if(event.keyCode == 13 && sticky.text) {
 				$scope.toggleEditMode();
 			}
+
+			$scope.stickies.$save(index).then(function(database) {
+				database.key == $scope.stickies[index].$id;
+			})
 		}
-	}])
-	.controller('AppCtrl', function($firebaseObject){
-	    var vm = this;
-	    var ref = firebase.database().ref();
-	    vm.data = $firebaseObject(ref);
-	});		
+	}]);
