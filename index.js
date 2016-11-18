@@ -8,24 +8,34 @@ var config = {
 };
 firebase.initializeApp(config);
 
-angular.module('myStickyApp', ['firebase'])
-	.controller('stickyCtrl', ['$scope', function stickyCtrl($scope) {
+angular.module('myStickyApp', ['firebase']) 
+	.controller('stickyCtrl', ['$scope', '$firebaseArray', function stickyCtrl($scope, $firebaseArray) {
+		var stickies = [];
 
-		var database = firebase.database();
+		var database = firebase.database().ref("/stickies");
+		console.log(database);
 
+		$scope.stickies = $firebaseArray(database);
+
+//ADD stickies
 		$scope.addSticky = function() {
-
-			firebase.database().ref('/stickies').push({
-				title: $scope.formStickyTitle,
+		    $scope.stickies.$add({
+		    	title: $scope.formStickyTitle,
 				text: $scope.formStickyText
-			})
-			$scope.formStickyText = '';
+		    });
+		    
+		    $scope.formStickyText = '';
 			$scope.formStickyTitle = '';
 		};
 
+
 		$scope.deleteSticky = function(sticky) {
+
 			var index = $scope.stickies.indexOf(sticky);
-			$scope.stickies.splice(index, 1);
+			$scope.stickies.$remove(index).then(function(database){
+				database.key === index.$id;
+
+			})
 		}
 
 		$scope.toggleEditMode = function() {

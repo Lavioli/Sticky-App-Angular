@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/Lavioli/Sticky-App-Angular#readme",
   "dependencies": {
+    "angular": "^1.5.8",
+    "angularfire": "^2.1.0",
     "firebase": "^3.6.1"
   }
 }
