@@ -14,9 +14,9 @@
 
 <div ng-app="myStickyApp">
 
-	<div ng-controller="stickyCtrl">
+	<div ng-controller="stickyCtrl" class="wrapper clearfix">
 		<ul id="sticky-list">
-			<li ng-repeat="sticky in stickies" ng-dblclick="toggleEditMode()">
+			<li class="note-wrap note-green" ng-repeat="sticky in stickies" ng-dblclick="toggleEditMode()">
 				<div class="view" ng-keyup="editToDo()">
 					<button ng-click="deleteSticky(sticky)">X</button>
 					<p>{{sticky.title}}</p>

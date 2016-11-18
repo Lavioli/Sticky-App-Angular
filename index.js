@@ -10,15 +10,28 @@ firebase.initializeApp(config);
 
 angular.module('myStickyApp', ['firebase']) 
 	.controller('stickyCtrl', ['$scope', '$firebaseArray', function stickyCtrl($scope, $firebaseArray) {
-		var database = firebase.database().ref("/stickies");
+		var database = firebase.database().ref("/stickies").orderByChild('timestamp');
+		// const feedRef = database;
+		// var feed = [];
+		
+		// feedRef.orderByChild('timestamp').on('value', (snapshot, error) => {
+		//     snapshot.forEach((duckSnap) => {
+		//         const duck = duckSnap.val()
+		//         feed.push(duck);
+
+		//     });
+		// });
+		// console.log(feed);
 
 		$scope.stickies = $firebaseArray(database);
+
 
 //ADD stickies
 		$scope.addSticky = function() {
 		    $scope.stickies.$add({
 		    	title: $scope.formStickyTitle,
-				text: $scope.formStickyText
+				text: $scope.formStickyText,
+				timestamp: 0 - Date.now()
 		    });
 		    
 		    $scope.formStickyText = '';
