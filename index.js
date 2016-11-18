@@ -1,27 +1,24 @@
-angular.module('myStickyApp', [])
-	.controller('stickyCtrl', ['$scope', function myController($scope) {
-		$scope.stickies = [
-			{
-				title: 'title1',
-				text: 'learn angularJS'
+// Initialize Firebase
+var config = {
+  apiKey: "AIzaSyBPKFraRS0wqYj9_Yp2b1sYMuapjJH98ew",
+  authDomain: "mystickyapp.firebaseapp.com",
+  databaseURL: "https://mystickyapp.firebaseio.com",
+  storageBucket: "mystickyapp.appspot.com",
+  messagingSenderId: "1037022995801"
+};
+firebase.initializeApp(config);
 
-			},
+angular.module('myStickyApp', ['firebase'])
+	.controller('stickyCtrl', ['$scope', function stickyCtrl($scope) {
 
-			{
-				title: 'title2',
-				text: 'build an app'
-			}				
-		];
-
-		$scope.getTotalStickies = function() {
-			return $scope.stickies.length;
-		};
+		var database = firebase.database();
 
 		$scope.addSticky = function() {
-			$scope.stickies.push({
+
+			firebase.database().ref('/stickies').push({
 				title: $scope.formStickyTitle,
 				text: $scope.formStickyText
-			});
+			})
 			$scope.formStickyText = '';
 			$scope.formStickyTitle = '';
 		};
@@ -40,4 +37,9 @@ angular.module('myStickyApp', [])
 				$scope.toggleEditMode();
 			}
 		}
-	}])			
+	}])
+	.controller('AppCtrl', function($firebaseObject){
+	    var vm = this;
+	    var ref = firebase.database().ref();
+	    vm.data = $firebaseObject(ref);
+	});		

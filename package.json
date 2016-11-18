@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Lavioli/Sticky-App-Angular/issues"
   },
-  "homepage": "https://github.com/Lavioli/Sticky-App-Angular#readme"
+  "homepage": "https://github.com/Lavioli/Sticky-App-Angular#readme",
+  "dependencies": {
+    "firebase": "^3.6.1"
+  }
 }

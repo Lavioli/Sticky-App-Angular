@@ -5,15 +5,6 @@
 	<meta charset="utf-8">
 	<title>Sticky App</title>
 
-	
-
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-
-	<script type="text/javascript" src="./index.js"></script>
-	<script
-	  src="https://code.jquery.com/jquery-3.1.1.min.js"
-	  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-	  crossorigin="anonymous"></script>
 	<link rel=stylesheet href="./style.css">
 </head>
 	
@@ -36,7 +27,7 @@
 			</li>
 
 		</ul>
-
+<!-- add sticky -->
 		<form>
 			<div>
 				<input type="add-input" placeholder="insert sticky title here" type="text" ng-model="formStickyTitle" ng-model-instant />
@@ -44,11 +35,21 @@
 			<div>
 				<input type="add-input" placeholder="insert sticky text here" type="text" ng-model="formStickyText" ng-model-instant />
 			</div>
-			<button ng-click="addSticky()">Add Sticky</button>
+			<input type="submit" value="Add" ng-click="addSticky()"/>
 		</form>
 	</div>
 </div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
+<script src="https://cdn.firebase.com/libs/angularfire/2.0.1/angularfire.min.js"></script>
+
+
+	<script type="text/javascript" src="./index.js"></script>
+	<script
+	  src="https://code.jquery.com/jquery-3.1.1.min.js"
+	  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+	  crossorigin="anonymous"></script>
 
 </body>
 
