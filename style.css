@@ -1,3 +1,6 @@
+
+
+
 #sticky-list {
 	margin: 10px 0;
 	padding: 0;
@@ -30,10 +33,11 @@
 
 #sticky-list li.editing .edit {
 	display: block;
-	width: 444px;
+	width: 235px;
+	min-height: 98.5px;
 	padding: 13px 15px 14px 20px;
 	margin: 0;
-	background-color: white;
+	background-color: #CAF4B9; 
 }
 
 
@@ -75,7 +79,7 @@ body {
 }
 
 .wrapper {
-	margin: 60px auto 0 auto; 
+	margin: 0;
 }
 
 /* Note styles */
@@ -159,3 +163,91 @@ body {
 	transform: rotate(-1deg);
 }
 
+.delete-button {
+	background-color: transparent;
+    border-style: hidden;
+    position: relative;
+    left: 50%;
+    bottom: 12px;
+}
+
+.sticky-title {
+	padding-left: 10px;
+    position: relative;
+    bottom: 50px;
+    text-align: initial;
+}
+
+#title {
+	position: relative;
+	padding-left: 40%;
+}
+
+#add-sticky-form {
+
+  display: table;
+  margin: 40px auto;
+    
+    
+    div {
+      color: #35dc9b;
+      font: 13px Helvetica, Arial, sans-serif;
+      position: absolute;
+      top: 0px;
+      left: 20px;
+      opacity: 0;
+      transition: all 0.2s ease-in-out;
+    }
+  }
+
+
+}
+
+  
+  input[type="submit"] {
+    transition: all 0.2s ease-in-out;
+    font: 18px Helvetica, Arial, sans-serif;
+    border: none;
+    background: #1aaf75;
+    color: #fff;
+    padding: 16px 40px;
+    
+    &:hover {
+      background: #109f67;
+    }
+  }
+
+#add-sticky-form input {
+
+    
+      font: 18px Helvetica, Arial, sans-serif;
+      box-sizing: border-box;
+      display: block;
+      border: none;
+      padding: 20px;
+      width: 300px;
+      margin-bottom: 20px;
+      font-size: 18px;
+      outline: none;
+      transition: all 0.2s ease-in-out;
+      
+      &::placeholder {
+        transition: all 0.2s ease-in-out;
+        color: #999;
+        font: 18px Helvetica, Arial, sans-serif;
+      }
+      
+      &:focus, &.populated {
+        padding-top: 28px;
+        padding-bottom: 12px;
+        
+        &::placeholder {
+          color: transparent;
+        }
+        
+        & + span {
+          opacity: 1;
+          top: 10px;
+        }
+   
+}

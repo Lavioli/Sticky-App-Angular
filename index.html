@@ -4,39 +4,44 @@
 <head>
 	<meta charset="utf-8">
 	<title>Sticky App</title>
-
+	
 	<link rel=stylesheet href="./style.css">
+
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 	
 <body>
 
-<h1>My Sticky App</h1>
+<h1 id="title">My Sticky App</h1>
 
 <div ng-app="myStickyApp">
 
 	<div ng-controller="stickyCtrl" class="wrapper clearfix">
-		<ul id="sticky-list">
-			<li class="note-wrap note-green" ng-repeat="sticky in stickies" ng-dblclick="toggleEditMode()">
-				<div class="view" ng-keyup="editToDo()">
-					<button ng-click="deleteSticky(sticky)">X</button>
-					<p>{{sticky.title}}</p>
-					<p>{{sticky.text}}</p>
-				</div>
-				<input class="edit" type="text" ng-model="sticky.title" ng-keyup="editOnEnter(sticky)" />
-				<input class="edit" type="text" ng-model="sticky.text" ng-keyup="editOnEnter(sticky)" />
-			</li>
-
-		</ul>
 <!-- add sticky -->
-		<form>
+		<form id="add-sticky-form">
 			<div>
-				<input type="add-input" placeholder="insert sticky title here" type="text" ng-model="formStickyTitle" ng-model-instant />
+				<input type="add-input" placeholder="insert sticky title here" type="text" ng-model="formStickyTitle" ng-model-instant ng-change="sitckies.$save(sticky)"/>
 			</div>
 			<div>
 				<input type="add-input" placeholder="insert sticky text here" type="text" ng-model="formStickyText" ng-model-instant ng-change="sitckies.$save(sticky)"/>
 			</div>
 			<input type="submit" value="Add" ng-click="addSticky()"/>
 		</form>
+
+		<ul id="sticky-list">
+			<li class="note-wrap note-green" ng-repeat="sticky in stickies" ng-dblclick="toggleEditMode()">
+				<div class="view" ng-keyup="editToDo()">
+					<button class="delete-button" ng-click="deleteSticky(sticky)">
+						<span class="glyphicon glyphicon-remove"></span>
+					</button>
+					<p class="sticky-title">{{ sticky.title }}</p>
+					<p class="sticky-text">{{ sticky.text }}</p>
+				</div>
+				<input class="edit" type="text" ng-model="sticky.title" ng-keyup="editOnEnter(sticky)" />
+				<input class="edit" type="text" ng-model="sticky.text" ng-keyup="editOnEnter(sticky)" />
+			</li>
+
+		</ul>
 	</div>
 </div>
 

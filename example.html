@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<title>Testing Angular and Firebase</title>
+	<script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
+
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<style type="text/css">
+		body {
+			margin: 20px;
+		}
+
+	</style>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+
+
+
+</head>
+<body ng-controller="employeeCtrl">
+
+	<div>
+		<label>Employee Name</labbel>
+		<input type="text" id="employeeName" ng-model="employeeName"> <br />
+
+		<label>Employee Age</labbel>
+		<input type="number" id="employeeAge" ng-model="employeeAge"> <br />
+	</div>
+
+	<div>
+		<button class="btn btn-default" ng-click="saveEmployee()">
+			Save <span class="glyphicon glyphicon-ok"></span>
+		</button>
+
+	</div>
+
+	<div>
+		Employee Name : {{ employeeName }} <br />
+		Employee Age: {{ employeeAge }}
+	</div>
+
+<!-- controller -->
+	
+	<script>
+
+		var config = {
+		    apiKey: "AIzaSyBPKFraRS0wqYj9_Yp2b1sYMuapjJH98ew",
+		    authDomain: "mystickyapp.firebaseapp.com",
+		    databaseURL: "https://mystickyapp.firebaseio.com",
+		    storageBucket: "mystickyapp.appspot.com",
+		    messagingSenderId: "1037022995801"
+		  };
+		firebase.initializeApp(config);
+
+
+		angular.module('myApp', [])
+			.controller('employeeCtrl', ['$scope',function employeeCtrl($scope) {
+			$scope.employeeName = "";
+			$scope.employeeAge = 0;
+
+			var database = firebase.database();
+
+			$scope.saveEmployee = function() {
+				firebase.database().ref('/Employees').push({
+					employeeName: $scope.employeeName,
+					employeeAge: $scope.employeeAge
+				})
+
+				alert('saved')
+			}
+		}]);
+		
+	</script>
+
+
+</body>
+</html>
